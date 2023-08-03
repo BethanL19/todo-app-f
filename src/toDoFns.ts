@@ -25,3 +25,7 @@ export const dumbyData: data[] = [
     task: "tidy room",
   },
 ];
+
+export const greet = () => {
+  return "Hi";
+};
