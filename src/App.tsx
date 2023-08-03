@@ -1,9 +1,10 @@
 import { ToDo } from "./toDo";
+import "./style.css";
 
 function App(): JSX.Element {
   return (
     <>
-      <h1>My To-Do List</h1>
+      <h1 className="title">My To-Do List</h1>
       <ToDo />
     </>
   );
