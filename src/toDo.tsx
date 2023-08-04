@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { data } from "./toDoFns";
 import axios from "axios";
 
@@ -13,19 +13,26 @@ export function ToDo(): JSX.Element {
     axios.patch(backend + `/${item.id}`, { complete: true });
   };
 
-  useEffect(() => {
-    const getData = async () => {
-      const response = await axios.get(backend);
-      setTasks(response.data);
-    };
-    getData();
-  }, []);
+  const getData = async () => {
+    const response = await axios.get(backend);
+    setTasks(response.data);
+  };
+  getData();
 
   const handleAddNewTask = () => {
     axios.post(backend, { text: newTask });
+    getData();
+    setNewTask("");
   };
 
-  const items = tasks.map((item: data, index: number) => (
+  const handleDelete = (item: data) => {
+    axios.delete(backend + `/${item.id}`);
+    getData();
+  };
+
+  const tasksSorted = tasks.sort((a, b) => b.id - a.id);
+
+  const items = tasksSorted.map((item: data, index: number) => (
     <li className="items" key={index}>
       <label className="title" key={index}>
         {item.task}
@@ -37,8 +44,17 @@ export function ToDo(): JSX.Element {
           onClick={() => {
             handleComplete(item);
           }}
-        ></button>
-        <button className="delete"></button>
+        >
+          ✅
+        </button>
+        <button
+          className="delete"
+          onClick={() => {
+            handleDelete(item);
+          }}
+        >
+          🚫
+        </button>
       </div>
     </li>
   ));
@@ -46,6 +62,7 @@ export function ToDo(): JSX.Element {
   return (
     <>
       <input
+        className="inputTask"
         placeholder="new task..."
         type="text"
         value={newTask}

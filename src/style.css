@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Borel&display=swap");
 html {
   background-color: lightpink;
   display: block;
@@ -6,31 +7,41 @@ html {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  font-family: "Borel", cursive;
 }
 .list {
-  display: flex;
-  flex-wrap: wrap;
-  text-align: center;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-content: center;
+  align-content: center;
 }
 .items {
   align-items: center;
   background-color: #fff;
   border: 0;
   border-radius: 20px;
-  justify-content: space-between;
+  justify-content: center;
   margin: 1vh 0;
   padding: 1vh;
   text-align: left;
-  width: 70vw;
+  width: 50vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 .title {
   font-size: 2rem;
   font-weight: 700;
+  display: grid;
+  align-items: center;
+  padding: 2vh;
+  margin: 1vh;
 }
 .buttons {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: right;
 }
 .delete {
   border: 0;
@@ -41,6 +52,7 @@ html {
   margin: 1vw;
   padding: 1vh;
   width: 4rem;
+  background-color: rgb(253, 148, 148);
 }
 .completefalse {
   border: 0;
@@ -51,6 +63,7 @@ html {
   margin: 1vw;
   padding: 1vh;
   width: 4rem;
+  color: transparent;
 }
 .completetrue {
   border: 0;
@@ -62,4 +75,17 @@ html {
   padding: 1vh;
   width: 4rem;
   background-color: lightgreen;
+  color: white;
+}
+.inputTask {
+  padding: 10px;
+  margin-left: 20px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+.add {
+  padding: 10px;
+  margin-left: 20px;
+  margin-top: 10px;
+  border-radius: 8px;
 }
